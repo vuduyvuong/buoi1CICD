@@ -32,3 +32,7 @@ jobs:
           tags: |
             ${{ secrets.DOCKER_USERNAME }}/react-ecommerce:latest
             ${{ secrets.DOCKER_USERNAME }}/react-ecommerce:${{ github.sha }}
+
+      - name: Trigger Render Deploy
+        run: |
+          curl -X POST "${{ secrets.RENDER_DEPLOY_HOOK }}"
