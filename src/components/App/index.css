@@ -1,6 +1,753 @@
-.content {
+/* Global Reset for App Page */
+.bansac-home-page {
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: #1A1A1A;
+  background-color: #FFFFFF;
+  overflow-x: hidden;
+}
+
+.site-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Toast notification */
+.cart-toast-notification {
+  position: fixed;
+  top: 90px;
+  right: 24px;
+  background-color: #0F172A;
+  color: #FFFFFF;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-size: 13.5px;
   display: flex;
+  align-items: center;
+  gap: 10px;
+  z-index: 9999;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  animation: slideInToast 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes slideInToast {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Common Section Typography */
+.section-badge {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #002B7F;
+  margin-bottom: 12px;
+}
+
+.section-badge-light {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #60A5FA;
+  margin-bottom: 16px;
+}
+
+.section-title {
+  font-family: 'Cormorant Garamond', 'Playfair Display', serif;
+  font-size: clamp(32px, 4vw, 44px);
+  font-weight: 600;
+  color: #111111;
+  line-height: 1.2;
+  margin: 0 0 12px 0;
+}
+
+.section-subtitle {
+  font-size: 15px;
+  color: #666666;
+  max-width: 600px;
+  line-height: 1.6;
   margin: 0;
+}
+
+.section-header.center {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.section-header.center .section-subtitle {
+  margin: 0 auto;
+}
+
+/* 1. HERO SECTION */
+.hero-section {
+  padding: 40px 0 70px 0;
+  background-color: #FFFFFF;
+}
+
+.hero-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.hero-media-col {
   width: 100%;
+}
+
+.hero-image-wrapper {
+  position: relative;
+  width: 100%;
+  padding-top: 110%; /* Tall portrait aspect ratio */
+  overflow: hidden;
+  border-radius: 4px;
+  background-color: #F1F1F3;
+}
+
+.hero-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.8s cubic-bezier(0.2, 0, 0.2, 1);
+}
+
+.hero-image-wrapper:hover .hero-image {
+  transform: scale(1.03);
+}
+
+.hero-content-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 20px 0 20px 20px;
+}
+
+.hero-title {
+  font-family: 'Cormorant Garamond', 'Playfair Display', serif;
+  font-size: clamp(40px, 5vw, 62px);
+  font-weight: 600;
+  color: #111111;
+  line-height: 1.1;
+  margin: 0 0 24px 0;
+  letter-spacing: -0.5px;
+}
+
+.hero-description {
+  font-size: 15.5px;
+  color: #555555;
+  line-height: 1.75;
+  margin: 0 0 36px 0;
+  max-width: 480px;
+}
+
+.hero-action-group {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #002B7F;
+  color: #FFFFFF !important;
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 15px 32px;
+  border-radius: 2px;
+  text-decoration: none !important;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 12px rgba(0, 43, 127, 0.15);
+}
+
+.btn-primary:hover {
+  background-color: #001F5C;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 43, 127, 0.25);
+}
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  color: #111111 !important;
+  border: 1px solid #111111;
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 14px 30px;
+  border-radius: 2px;
+  text-decoration: none !important;
+  transition: all 0.25s ease;
+}
+
+.btn-outline:hover {
+  background-color: #111111;
+  color: #FFFFFF !important;
+  transform: translateY(-2px);
+}
+
+/* 2. CATEGORIES SECTION */
+.categories-section {
+  padding: 60px 0 80px 0;
+  background-color: #FFFFFF;
+}
+
+.categories-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.category-card {
+  text-decoration: none !important;
+  display: block;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.category-image-wrap {
+  position: relative;
+  width: 100%;
+  padding-top: 145%; /* Tall portrait card */
+  overflow: hidden;
+  background-color: #EAEAEA;
+}
+
+.category-image-wrap img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.2, 0, 0.2, 1);
+}
+
+.category-card:hover .category-image-wrap img {
+  transform: scale(1.06);
+}
+
+.category-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(15, 15, 15, 0.85) 0%, rgba(15, 15, 15, 0.2) 45%, transparent 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 24px 20px;
+  transition: background 0.3s ease;
+}
+
+.category-name {
+  font-family: 'Cormorant Garamond', 'Playfair Display', serif;
+  font-size: 26px;
+  font-weight: 600;
+  color: #FFFFFF;
+  margin: 0 0 4px 0;
+  letter-spacing: 0.5px;
+}
+
+.category-link {
+  font-size: 13px;
+  font-weight: 500;
+  color: #E2E8F0;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.category-card:hover .category-link {
+  color: #93C5FD;
+  transform: translateX(4px);
+}
+
+/* 3. FEATURED PRODUCTS SECTION */
+.featured-products-section {
+  padding: 60px 0 90px 0;
+  background-color: #FFFFFF;
+}
+
+.products-header-row {
+  display: flex;
+  align-items: flex-end;
   justify-content: space-between;
+  margin-bottom: 40px;
+  border-bottom: 1px solid #EEEEEE;
+  padding-bottom: 20px;
+}
+
+.view-all-link {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #002B7F !important;
+  text-decoration: none !important;
+  transition: transform 0.2s ease;
+}
+
+.view-all-link:hover {
+  transform: translateX(4px);
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.product-card {
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease;
+}
+
+.product-img-box {
+  position: relative;
+  width: 100%;
+  padding-top: 125%;
+  overflow: hidden;
+  background-color: #F8F8F9;
+  border-radius: 4px;
+  margin-bottom: 16px;
+}
+
+.product-img-box img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.product-card:hover .product-img-box img {
+  transform: scale(1.05);
+}
+
+.product-tag {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background-color: rgba(255, 255, 255, 0.92);
+  color: #002B7F;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  padding: 4px 10px;
+  border-radius: 2px;
+  z-index: 2;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.product-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.product-info-row {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.product-name {
+  font-size: 15px;
+  font-weight: 500;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.product-name a {
+  color: #1A1A1A;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.product-name a:hover {
+  color: #002B7F;
+}
+
+.product-price {
+  font-size: 15px;
+  font-weight: 600;
+  color: #111111;
+}
+
+.add-to-cart-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  margin-top: 4px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #002B7F;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.add-to-cart-btn:hover {
+  color: #001F5C;
+  text-decoration: underline;
+}
+
+/* 4. BRAND PHILOSOPHY SECTION */
+.philosophy-section {
+  background-color: #111111;
+  color: #FFFFFF;
+  margin: 40px 0;
+}
+
+.philosophy-container {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  align-items: stretch;
+  min-height: 480px;
+}
+
+.philosophy-text-col {
+  padding: 80px 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.philosophy-quote {
+  font-family: 'Cormorant Garamond', 'Playfair Display', serif;
+  font-size: clamp(24px, 3vw, 34px);
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.45;
+  color: #F3F4F6;
+  margin: 0 0 24px 0;
+  border: none;
+  padding: 0;
+}
+
+.philosophy-author {
+  font-size: 14px;
+  font-style: normal;
+  color: #9CA3AF;
+  letter-spacing: 1px;
+  margin-bottom: 32px;
+}
+
+.philosophy-link {
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: #93C5FD !important;
+  text-decoration: none !important;
+  transition: transform 0.2s ease;
+  display: inline-block;
+}
+
+.philosophy-link:hover {
+  transform: translateX(5px);
+  color: #BFDBFE !important;
+}
+
+.philosophy-media-col {
+  position: relative;
+  width: 100%;
+  min-height: 380px;
+}
+
+.philosophy-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* 5. SERVICES / FEATURES SECTION */
+.services-section {
+  padding: 80px 0;
+  background-color: #FFFFFF;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.service-card {
+  background-color: #FAF9F7;
+  border: 1px solid #ECEAE5;
+  border-radius: 6px;
+  padding: 40px 32px;
+  text-align: left;
+  transition: all 0.3s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.04);
+  border-color: #DFDDD8;
+}
+
+.service-icon-wrap {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background-color: #EBF2FF;
+  color: #002B7F;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+.service-title {
+  font-family: 'Cormorant Garamond', 'Playfair Display', serif;
+  font-size: 22px;
+  font-weight: 600;
+  color: #111111;
+  margin: 0 0 12px 0;
+}
+
+.service-desc {
+  font-size: 14px;
+  color: #666666;
+  line-height: 1.65;
+  margin: 0;
+}
+
+/* 6. ARTISAN CRAFTSMANSHIP SECTION */
+.artisan-section {
+  padding: 80px 0;
+  background-color: #FFFFFF;
+}
+
+.artisan-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 70px;
+  align-items: center;
+}
+
+.artisan-image-wrapper {
+  position: relative;
+  width: 100%;
+  padding-top: 105%;
+  overflow: hidden;
+  border-radius: 4px;
+  background-color: #F1F1F3;
+}
+
+.artisan-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.artisan-content-col {
+  padding-right: 20px;
+}
+
+.artisan-title {
+  font-family: 'Cormorant Garamond', 'Playfair Display', serif;
+  font-size: clamp(34px, 4vw, 46px);
+  font-weight: 600;
+  color: #111111;
+  line-height: 1.2;
+  margin: 0 0 24px 0;
+}
+
+.artisan-text {
+  font-size: 15px;
+  color: #555555;
+  line-height: 1.8;
+  margin: 0 0 20px 0;
+}
+
+.artisan-action {
+  margin-top: 28px;
+}
+
+.artisan-link {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #002B7F !important;
+  text-decoration: none !important;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: transform 0.2s ease;
+}
+
+.artisan-link:hover {
+  transform: translateX(4px);
+}
+
+/* 7. NEWSLETTER SECTION */
+.newsletter-section {
+  background-color: #F4F2EE;
+  padding: 90px 0;
+}
+
+.newsletter-inner {
+  max-width: 640px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.newsletter-title {
+  font-family: 'Cormorant Garamond', 'Playfair Display', serif;
+  font-size: clamp(30px, 3.5vw, 40px);
+  font-weight: 600;
+  color: #111111;
+  margin: 0 0 14px 0;
+}
+
+.newsletter-subtitle {
+  font-size: 15px;
+  color: #666666;
+  line-height: 1.6;
+  margin: 0 0 32px 0;
+}
+
+.newsletter-form {
+  display: flex;
+  gap: 12px;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.newsletter-input {
+  flex: 1;
+  background-color: #FFFFFF !important;
+  border: 1px solid #D5D2CA !important;
+  border-radius: 2px !important;
+  padding: 14px 18px !important;
+  font-size: 14px !important;
+  color: #1A1A1A !important;
+  outline: none !important;
+  height: 48px !important;
+  box-sizing: border-box !important;
+  margin: 0 !important;
+}
+
+.newsletter-input:focus {
+  border-color: #002B7F !important;
+  box-shadow: 0 0 0 3px rgba(0, 43, 127, 0.1) !important;
+}
+
+.newsletter-btn {
+  background-color: #002B7F;
+  color: #FFFFFF;
+  border: none;
+  padding: 0 28px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  border-radius: 2px;
+  cursor: pointer;
+  height: 48px;
+  transition: background-color 0.2s ease;
+}
+
+.newsletter-btn:hover {
+  background-color: #001F5C;
+}
+
+.newsletter-success {
+  background-color: #ECFDF5;
+  color: #065F46;
+  border: 1px solid #A7F3D0;
+  padding: 16px;
+  border-radius: 4px;
+  font-size: 14.5px;
+}
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 1024px) {
+  .hero-container {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .hero-content-col {
+    padding: 0;
+  }
+  .categories-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .products-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .philosophy-container {
+    grid-template-columns: 1fr;
+  }
+  .philosophy-text-col {
+    padding: 60px 30px;
+  }
+  .artisan-container {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .artisan-content-col {
+    padding-right: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .services-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .newsletter-form {
+    flex-direction: column;
+  }
+  .newsletter-btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 540px) {
+  .categories-grid {
+    grid-template-columns: 1fr;
+  }
+  .products-grid {
+    grid-template-columns: 1fr;
+  }
+  .hero-action-group {
+    flex-direction: column;
+    width: 100%;
+  }
+  .btn-primary, .btn-outline {
+    width: 100%;
+  }
 }

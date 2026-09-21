@@ -9,8 +9,8 @@ import './index.css';
 
 class ShowProduct extends Component {
   render () {
-    const product = find(PRODUCTS, ['id', parseInt(this.props.match.params.id)]);
-    const currentProduct = product;
+    const product = find(PRODUCTS, ['id', parseInt(this.props.match.params.id, 10)]);
+    const currentProduct = product || PRODUCTS[0];
     return (
       <div className="show-product">
         <div className="item-wrapper">
@@ -23,7 +23,7 @@ class ShowProduct extends Component {
             </div>
             <div className="product-bio">
               <p id="product-description">{currentProduct.description}</p>
-              <p id="product-price">${currentProduct.price}</p>
+              <p id="product-price">{typeof currentProduct.price === 'number' && currentProduct.price > 1000 ? `${currentProduct.price.toLocaleString('vi-VN')} ₫` : `$${currentProduct.price}`}</p>
               <Icon small id="add-icon">add_shopping_cart</Icon>
             </div>
             <div className="product-review">
@@ -38,33 +38,27 @@ class ShowProduct extends Component {
           </div>
         </div>
         <div className="similar-products">
-          <h5>You might also like</h5>
-          {PRODUCTS.map((product) => {
-            if (
-              product.gender === currentProduct.gender
-              && product.type === currentProduct.type
-              && product.name !== currentProduct.name) {
-              return(
-                <Link to={`/products/${product.id}`}>
-                  <div key={product.id} className="item">
-                    <Link to={`/products/${product.id}`}>
-                    <div className="product-img">
-                      <img alt={product.name} src={product.img} />
-                    </div>
-                    <div className="product-details">
-                      <h1 id="product-name">{product.name}</h1>
-                      <h4 id="product-description">{product.description}</h4>
-                    </div>
-                    </Link>
-                    <div className="price-add">
-                      <h5 id="product-price">${product.price}</h5>
-                      <Icon small id="add-icon">add_shopping_cart</Icon>
-                    </div>
+          <h5>Sản phẩm liên quan</h5>
+          {PRODUCTS
+            .filter((p) => p.gender === currentProduct.gender && p.id !== currentProduct.id)
+            .slice(0, 4)
+            .map((item) => (
+              <div key={item.id} className="item">
+                <Link to={`/products/${item.id}`}>
+                  <div className="product-img">
+                    <img alt={item.name} src={item.img} />
+                  </div>
+                  <div className="product-details">
+                    <h1 id="product-name">{item.name}</h1>
+                    <h4 id="product-description">{item.description}</h4>
                   </div>
                 </Link>
-              )
-            }
-          })}
+                <div className="price-add">
+                  <h5 id="product-price">{typeof item.price === 'number' && item.price > 1000 ? `${item.price.toLocaleString('vi-VN')} ₫` : `$${item.price}`}</h5>
+                  <Icon small id="add-icon">add_shopping_cart</Icon>
+                </div>
+              </div>
+            ))}
         </div>
       </div>
     );

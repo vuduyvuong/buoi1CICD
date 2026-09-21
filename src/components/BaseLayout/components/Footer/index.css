@@ -1,11 +1,199 @@
-.footer {
-  height: 3em;
-  background-color: black;
-  color: #FFF;
-  width: 100vw;
-  display: flex;
-  justify-content: center;
+.bansac-footer {
+  background-color: #0F0F11;
+  color: #D1D5DB;
+  padding: 80px 24px 32px 24px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  position: relative;
+  overflow: hidden;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.footer-container {
+  max-width: 1320px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+  gap: 48px;
+  margin-bottom: 60px;
+}
+
+.brand-col .footer-logo {
+  display: inline-flex;
   align-items: center;
-  font-family: 'Quicksand', sans-serif;
-  font-weight: lighter;
+  gap: 4px;
+  margin-bottom: 18px;
+}
+
+.footer-logo-img {
+  height: 28px;
+  width: auto;
+  display: block;
+  object-fit: contain;
+}
+
+.brand-col .logo-text {
+  font-family: 'Cormorant Garamond', 'Playfair Display', serif;
+  font-size: 27px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  color: #FFFFFF;
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+.brand-col .logo-accent-line {
+  display: inline-block;
+  width: 24px;
+  height: 3px;
+  background-color: #3B82F6;
+  border-radius: 2px;
+  margin-left: 2px;
+}
+
+.brand-desc {
+  font-size: 14px;
+  line-height: 1.7;
+  color: #9CA3AF;
+  margin-bottom: 24px;
+  max-width: 320px;
+}
+
+.social-links {
+  display: flex;
+  gap: 12px;
+}
+
+.social-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #D1D5DB;
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.social-icon:hover {
+  background-color: #002B7F;
+  color: #FFFFFF;
+  transform: translateY(-2px);
+}
+
+.footer-heading {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  margin: 0 0 20px 0;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.footer-list {
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.footer-list li {
+  margin-bottom: 12px;
+  font-size: 13.5px;
+  color: #9CA3AF;
+  line-height: 1.5;
+}
+
+.footer-list li a {
+  color: #9CA3AF;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer-list li a:hover {
+  color: #FFFFFF;
+}
+
+.contact-list li strong {
+  color: #E5E7EB;
+  font-weight: 500;
+}
+
+/* Watermark */
+.footer-watermark {
+  text-align: center;
+  margin: 40px 0 30px 0;
+  user-select: none;
+  pointer-events: none;
+}
+
+.footer-watermark span {
+  font-family: 'Cormorant Garamond', 'Playfair Display', serif;
+  font-size: clamp(60px, 12vw, 150px);
+  font-weight: 700;
+  letter-spacing: 14px;
+  color: rgba(255, 255, 255, 0.035);
+  display: block;
+  line-height: 0.9;
+  text-transform: uppercase;
+}
+
+/* Bottom Bar */
+.footer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 24px;
+  font-size: 13px;
+  color: #6B7280;
+}
+
+.copyright-text {
+  margin: 0;
+}
+
+.footer-policy-links {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.footer-policy-links a {
+  color: #9CA3AF;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer-policy-links a:hover {
+  color: #FFFFFF;
+}
+
+.footer-policy-links .divider {
+  color: #4B5563;
+}
+
+@media (max-width: 992px) {
+  .footer-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+  }
+}
+
+@media (max-width: 600px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .footer-bottom {
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+  }
 }
