@@ -297,7 +297,7 @@ class Dashboard extends Component {
                     <button
                       type="button"
                       className="view-store-btn"
-                      style={{ color: '#0aa5e3', backgroundColor: '#EFF6FF', marginTop: '10px' }}
+                      style={{ color: '#1de312', backgroundColor: '#EFF6FF', marginTop: '10px' }}
                       onClick={onNavigateToProducts}
                     >
                       Quản lý kho hàng &rarr;
