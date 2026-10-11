@@ -27,7 +27,7 @@ services:
   frontend:
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.frontend
     container_name: react-ecommerce-app
     ports:
       - "8080:80"
