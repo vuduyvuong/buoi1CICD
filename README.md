@@ -1,144 +1,134 @@
-# React E-commerce Store
+# BẢN SẮC — React Ecommerce Full Stack
 
-Một ứng dụng mua sắm trực tuyến được xây dựng bằng React, cho phép người dùng duyệt sản phẩm theo danh mục, xem chi tiết sản phẩm, thêm vào giỏ hàng và quản lý đơn hàng đơn giản.
+Ứng dụng ecommerce gồm storefront React, trang quản trị, REST API Node.js/Express và Microsoft SQL Server.
 
-![demo](ecommerce.gif)
+## Chức năng
 
-## Giới thiệu
+- Danh mục, tìm kiếm, sắp xếp và chi tiết sản phẩm.
+- Giỏ hàng theo biến thể màu/size và mã ưu đãi.
+- Đăng ký, đăng nhập, đăng xuất, quên/đặt lại mật khẩu.
+- Mật khẩu băm bằng `scrypt`; session lưu bằng cookie `HttpOnly`.
+- Checkout, kiểm tra tồn kho, tính lại giá trên server và tạo đơn hàng.
+- Profile, lịch sử đơn hàng và hạng thành viên.
+- API quản trị sản phẩm, tồn kho và trạng thái đơn hàng.
+- Form hỗ trợ, chính sách, FAQ và responsive mobile.
+- Docker Compose chạy frontend Nginx và backend riêng biệt.
 
-Dự án này là một storefront thương mại điện tử demo với giao diện thân thiện, được chia theo các nhóm như:
+## Chạy môi trường development
 
-- Nam
-- Nữ
-- Phụ kiện
-- Tất cả sản phẩm
-
-Người dùng có thể:
-
-- Lọc và xem danh sách sản phẩm
-- Xem chi tiết từng sản phẩm
-- Thêm sản phẩm vào giỏ hàng
-- Tìm hiểu các sản phẩm tương tự
-- Điều hướng giữa các trang bằng React Router
-
-## Công nghệ sử dụng
-
-- React 15
-- React DOM
-- React Router DOM
-- React Materialize
-- Create React App
-- CSS Modules / CSS tùy chỉnh
-- Docker + Nginx
-
-## Cấu trúc project
-
-```bash
-React-Ecommerce/
-├── public/
-│   ├── index.html
-│   └── manifest.json
-├── src/
-│   ├── components/
-│   │   ├── Accessories/
-│   │   ├── App/
-│   │   ├── BaseLayout/
-│   │   ├── Cart/
-│   │   ├── Clothes/
-│   │   ├── Data/
-│   │   ├── Items/
-│   │   ├── Men/
-│   │   ├── ShowProduct/
-│   │   └── Women/
-│   ├── index.css
-│   └── index.js
-├── Dockerfile
-├── docker-compose.yml
-├── nginx.conf
-├── package.json
-├── README.md
-└── .gitignore
-```
-
-## Yêu cầu môi trường
-
-Trước khi chạy dự án, hãy đảm bảo máy của bạn đã cài đặt:
-
-- Node.js >= 16
-- npm hoặc yarn
-
-## Cài đặt
+Yêu cầu Node.js 18 trở lên.
 
 ```bash
 npm install
+npm run server
 ```
 
-## Chạy ứng dụng ở môi trường phát triển
+Mở terminal thứ hai:
 
 ```bash
 npm start
 ```
 
-Sau khi chạy, ứng dụng sẽ mở ở:
+- Frontend: `http://localhost:3000`
+- Backend: `http://localhost:4000`
+- Health check: `http://localhost:4000/api/health`
 
-```bash
-http://localhost:3000
+Create React App tự proxy `/api` sang port 4000.
+
+## Kết nối SQL Server Express
+
+Sao chép `.env.example` thành `.env`, sau đó chỉ thay `DB_PASSWORD` bằng mật khẩu
+của tài khoản `sa`. Cấu hình mặc định dành cho instance trong ảnh là:
+
+```env
+DB_PROVIDER=mssql
+DB_SERVER=localhost
+DB_INSTANCE=SQLEXPRESS
+DB_NAME=bansacdb
+DB_USER=sa
+DB_PASSWORD=your-sa-password
+DB_ENCRYPT=false
+DB_TRUST_SERVER_CERTIFICATE=true
 ```
 
-## Build production
+Kiểm tra kết nối trước khi chạy web:
 
 ```bash
+npm run test:db
+```
+
+Khi backend đang chạy, `GET http://localhost:4000/api/health/database` trả về
+database, server, số bảng và trạng thái schema. Nếu named instance không kết nối
+được, hãy bật TCP/IP cho `SQLEXPRESS`, khởi động SQL Server Browser và restart
+dịch vụ SQL Server.
+
+Đặt `ADMIN_EMAIL` và một `ADMIN_PASSWORD` mạnh trong `.env`, sau đó tạo hoặc
+đồng bộ tài khoản quản trị trong SQL Server bằng:
+
+```bash
+npm run seed:admin
+```
+
+## Tài khoản quản trị mặc định
+
+- Email: `admin@bansac.vn`
+- Mật khẩu: `Admin@123`
+
+Hãy đặt `ADMIN_EMAIL` và `ADMIN_PASSWORD` trong môi trường trước lần khởi động đầu tiên khi triển khai thật. Tham khảo [.env.example](.env.example).
+
+## Kiểm thử và build
+
+```bash
+npm run test:api
 npm run build
 ```
 
-Kết quả build sẽ được tạo trong thư mục `build/`.
+API test kiểm tra đăng ký, session, danh sách sản phẩm, mã ưu đãi, tạo đơn và lịch sử đơn hàng.
 
-## Chạy bằng Docker
-
-### Sử dụng Docker Compose
+## Docker
 
 ```bash
-docker-compose up --build
+docker compose up --build
 ```
 
-Sau đó truy cập:
+Truy cập `http://localhost:8080`. Nginx phục vụ React và proxy `/api` sang container backend. Dữ liệu backend được giữ trong Docker volume `backend-data`.
 
-```bash
-http://localhost:8080
-```
+## API chính
 
-### Hoặc build thủ công image
+| Nhóm | Endpoint |
+|---|---|
+| Health | `GET /api/health` |
+| Auth | `POST /api/auth/register`, `POST /api/auth/login`, `GET /api/auth/me`, `POST /api/auth/logout` |
+| Password | `POST /api/auth/forgot-password`, `POST /api/auth/reset-password` |
+| Products | `GET /api/products`, `GET /api/products/:id` |
+| Admin products | `GET /api/admin/products`, `POST/PUT/DELETE /api/products` |
+| Cart | `GET /api/cart`, `PUT /api/cart` |
+| Promotions | `POST /api/promos/validate` |
+| Orders | `POST /api/orders`, `GET /api/orders/my` |
+| Admin orders | `GET /api/orders`, `PATCH /api/orders/:id/status` |
+| Profile | `PUT /api/profile` |
+| Support | `POST /api/contacts` |
 
-```bash
-docker build -t react-ecommerce .
-docker run -p 8080:80 react-ecommerce
-```
+## Dữ liệu
 
-## Cấu hình Docker
+Khi `DB_PROVIDER=mssql`, `npm run server` sử dụng SQL Server thông qua
+`server/sql-app.js`. Provider JSON cũ được giữ để chạy bộ kiểm thử độc lập và có
+thể dùng bằng `DB_PROVIDER=json`; dữ liệu của provider này nằm tại
+`server/data/db.json`.
 
-Dự án đã có:
+### Microsoft SQL Server / SSMS
 
-- `Dockerfile` để build ứng dụng React và phục vụ bằng Nginx
-- `docker-compose.yml` để chạy container nhanh chóng
-- `nginx.conf` để hỗ trợ routing cho ứng dụng SPA (React Router)
+Thiết kế database SQL Server nằm trong [`database/sqlserver`](database/sqlserver/README.md). Chạy lần lượt:
 
-## Ghi chú
+1. `01_schema.sql`
+2. `02_seed.sql`
+3. `03_procedures.sql`
 
-Dự án này là một demo thương mại điện tử đơn giản, tập trung vào giao diện và trải nghiệm người dùng thay vì xử lý backend thật sự. Sản phẩm dữ liệu đang nằm trong `src/components/Data/index.js` và được sử dụng để hiển thị sản phẩm trên giao diện.
+Schema bao gồm auth/session, RBAC, catalog, biến thể và tồn kho, giỏ hàng, khuyến mãi, đơn hàng, thanh toán, hỗ trợ và audit log.
 
-## License
+## Lưu ý production
 
-Dự án này được cung cấp theo mục đích học tập và demo. Bạn có thể tùy chỉnh, mở rộng và phát triển thêm theo nhu cầu của mình.
-
-## Tác giả
-
-Nếu bạn đang sử dụng hoặc học dự án này, hãy coi đây là nền tảng để phát triển thêm chức năng như:
-
-- đăng nhập/đăng ký
-- thanh toán online
-- quản lý đơn hàng
-- API backend thực tế
-- admin dashboard
-- lưu giỏ hàng vào localStorage
-
-Nếu bạn muốn, mình có thể tiếp tục viết thêm phiên bản README bằng tiếng Anh hoặc chỉnh lại theo kiểu portfolio / project submission chuẩn hơn.
+- Đổi mật khẩu admin mặc định trước khi chạy lần đầu.
+- Cấu hình HTTPS để cookie session có thuộc tính `Secure`.
+- Tích hợp SMTP cho email đặt lại mật khẩu.
+- Tích hợp cổng thanh toán thật cho thẻ/chuyển khoản; backend hiện không lưu thông tin thẻ.

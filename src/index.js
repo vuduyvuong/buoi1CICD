@@ -14,6 +14,12 @@ import Clothes from './components/Clothes';
 import Accessories from './components/Accessories';
 import ShowProduct from './components/ShowProduct';
 import AdminPortal from './components/Admin';
+import NotFound from './components/NotFound';
+import Auth from './components/Auth';
+import Account from './components/Account';
+import Checkout from './components/Checkout';
+import InfoPage from './components/InfoPage';
+import ForgotPassword from './components/ForgotPassword';
 import registerServiceWorker from './registerServiceWorker';
 
 ReactDOM.render(
@@ -33,6 +39,19 @@ ReactDOM.render(
             <Route path="/clothes" component={Clothes} />
             <Route path="/accessories" component={Accessories} />
             <Route exact path="/products/:id" component={ShowProduct} />
+            <Route exact path="/login" render={(props) => <Auth {...props} mode="login" />} />
+            <Route exact path="/register" render={(props) => <Auth {...props} mode="register" />} />
+            <Route exact path="/account" component={Account} />
+            <Route exact path="/checkout" component={Checkout} />
+            <Route exact path="/forgot-password" component={ForgotPassword} />
+            <Route exact path="/size-guide" render={() => <InfoPage type="size-guide" />} />
+            <Route exact path="/shipping" render={() => <InfoPage type="shipping" />} />
+            <Route exact path="/returns" render={() => <InfoPage type="returns" />} />
+            <Route exact path="/faq" render={() => <InfoPage type="faq" />} />
+            <Route exact path="/support" render={() => <InfoPage type="support" />} />
+            <Route exact path="/privacy" render={() => <InfoPage type="privacy" />} />
+            <Route exact path="/terms" render={() => <InfoPage type="terms" />} />
+            <Route component={NotFound} />
           </Switch>
         </BaseLayout>
       )} />

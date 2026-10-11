@@ -1,0 +1,21 @@
+.catalog-page { background:#fff; color:#171717; min-height:70vh; font-family:'Plus Jakarta Sans',sans-serif; }
+.catalog-shell { max-width:1240px; margin:0 auto; padding-left:24px; padding-right:24px; }
+.catalog-hero { background:#f3f0ea; padding:74px 0 68px; border-bottom:1px solid #e5e0d7; }
+.catalog-hero span,.catalog-type { color:#876f4f; text-transform:uppercase; letter-spacing:2px; font-size:11px; font-weight:700; }
+.catalog-hero h1 { font-family:'Cormorant Garamond','Playfair Display',serif; font-size:clamp(44px,7vw,76px); line-height:1; margin:12px 0 18px; font-weight:600; }
+.catalog-hero p { color:#64605b; max-width:620px; line-height:1.75; margin:0; font-size:15px; }
+.catalog-content { padding-top:42px; padding-bottom:90px; }
+.catalog-toolbar { display:flex; justify-content:space-between; align-items:center; gap:20px; margin-bottom:30px; padding-bottom:20px; border-bottom:1px solid #e8e5df; }
+.catalog-toolbar>p { margin:0; color:#777; font-size:13px; }
+.catalog-controls { display:flex; gap:12px; }.catalog-search { height:42px; width:230px; border:1px solid #ddd8cf; display:flex; align-items:center; padding:0 12px; background:#fff; }
+.catalog-search span { color:#888; font-size:20px; margin-right:8px; }.catalog-search input { border:0!important; box-shadow:none!important; height:auto!important; margin:0!important; font-size:13px!important; padding:0!important; }
+.catalog-controls select { display:block; width:180px; height:42px; border:1px solid #ddd8cf; padding:0 12px; background:#fff; color:#444; }
+.catalog-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:42px 24px; }.catalog-card { min-width:0; }
+.catalog-image { position:relative; display:block; overflow:hidden; aspect-ratio:4/5; background:#f2f1ef; color:#111; }.catalog-image img { width:100%; height:100%; object-fit:cover; display:block; transition:transform .55s ease; }
+.catalog-card:hover .catalog-image img { transform:scale(1.035); }.catalog-badge { position:absolute; top:14px; left:14px; z-index:2; background:#fff; padding:7px 10px; font-size:10px; letter-spacing:1.2px; text-transform:uppercase; }
+.catalog-view { position:absolute; left:16px; right:16px; bottom:16px; background:rgba(17,17,17,.9); color:#fff; text-align:center; padding:13px; font-size:11px; letter-spacing:1px; text-transform:uppercase; opacity:0; transform:translateY(8px); transition:.25s ease; }.catalog-card:hover .catalog-view { opacity:1; transform:none; }
+.catalog-card-body { padding-top:17px; }.catalog-type { margin:0 0 7px; font-size:9px; }.catalog-card h2 { font-family:'Cormorant Garamond',serif; font-size:23px; margin:0 0 6px; line-height:1.15; }.catalog-card h2 a { color:#171717; text-decoration:none; }
+.catalog-description { color:#777; font-size:12px; margin:0; line-height:1.5; min-height:36px; }.catalog-buy-row { display:flex; justify-content:space-between; align-items:center; margin-top:16px; }.catalog-buy-row strong { font-size:14px; }.catalog-buy-row button { width:36px; height:36px; border:1px solid #1c1c1c; background:#fff; font-size:22px; line-height:1; cursor:pointer; transition:.2s; }.catalog-buy-row button:hover { background:#002b7f; color:#fff; border-color:#002b7f; }
+.catalog-toast { position:fixed; top:112px; right:24px; z-index:1200; background:#102f22; color:#fff; padding:15px 20px; box-shadow:0 10px 30px rgba(0,0,0,.18); font-size:13px; }.catalog-empty { text-align:center; padding:80px 20px; background:#faf9f7; }.catalog-empty h2 { font-family:'Cormorant Garamond',serif; font-size:32px; margin:0 0 8px; }.catalog-empty p{color:#777}.catalog-empty button{border:0;background:#002b7f;color:#fff;padding:12px 22px;cursor:pointer}
+@media(max-width:900px){.catalog-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.catalog-toolbar{align-items:flex-start;flex-direction:column}.catalog-controls{width:100%}.catalog-search{flex:1;width:auto}}
+@media(max-width:560px){.catalog-hero{padding:48px 0}.catalog-content{padding-top:28px}.catalog-controls{flex-direction:column}.catalog-search,.catalog-controls select{width:100%;box-sizing:border-box}.catalog-grid{grid-template-columns:1fr;gap:34px}.catalog-toast{left:16px;right:16px;top:92px}.catalog-view{opacity:1;transform:none;background:rgba(17,17,17,.76)}}

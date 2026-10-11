@@ -19,3 +19,8 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# local backend persistence and secrets
+/server/data/db.json
+/server/data/*.tmp
+.env

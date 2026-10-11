@@ -2,9 +2,13 @@
   "name": "ecommerce",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:4000",
   "dependencies": {
     "amazon-product-api": "^0.4.4",
+    "dotenv": "^18.0.5",
+    "express": "^4.21.2",
     "lodash": "^4.17.4",
+    "mssql": "^12.7.4",
     "prop-types": "^15.5.10",
     "react": "^15.6.1",
     "react-animate-css": "0.0.1",
@@ -15,6 +19,10 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "server": "node server/start.js",
+    "test:db": "node server/test-db-connection.js",
+    "seed:admin": "node server/seed-admin.js",
+    "test:api": "node server/api.test.js",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"

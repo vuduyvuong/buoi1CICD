@@ -1,6 +1,29 @@
 version: '3.8'
 
 services:
+  backend:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    container_name: bansac-api
+    environment:
+      - NODE_ENV=production
+      - PORT=4000
+      - DATA_DIR=/app/data
+      - ADMIN_EMAIL=${ADMIN_EMAIL:-admin@bansac.vn}
+      - ADMIN_PASSWORD=${ADMIN_PASSWORD:-Admin@123}
+      - DB_PROVIDER=${DB_PROVIDER:-mssql}
+      - DB_SERVER=${DB_SERVER:-host.docker.internal}
+      - DB_INSTANCE=${DB_INSTANCE:-SQLEXPRESS}
+      - DB_NAME=${DB_NAME:-bansacdb}
+      - DB_USER=${DB_USER:-sa}
+      - DB_PASSWORD=${DB_PASSWORD}
+      - DB_ENCRYPT=${DB_ENCRYPT:-false}
+      - DB_TRUST_SERVER_CERTIFICATE=${DB_TRUST_SERVER_CERTIFICATE:-true}
+    volumes:
+      - backend-data:/app/data
+    restart: unless-stopped
+
   frontend:
     build:
       context: .
@@ -8,6 +31,11 @@ services:
     container_name: react-ecommerce-app
     ports:
       - "8080:80"
+    depends_on:
+      - backend
     restart: unless-stopped
     environment:
       - NODE_ENV=production
+
+volumes:
+  backend-data:

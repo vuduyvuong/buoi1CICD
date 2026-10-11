@@ -17,6 +17,8 @@
   color: #1E293B;
 }
 
+.admin-access-denied{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;background:#f8fafc;padding:30px}.admin-access-denied h1{font-size:32px;margin:0 0 10px}.admin-access-denied p{color:#64748b}.admin-access-denied a{background:#002b7f;color:#fff;text-decoration:none;padding:13px 22px;margin-top:14px;font-size:12px}.admin-api-error{background:#fff0ee;border-bottom:1px solid #efc7c2;color:#9d2c22;padding:12px 22px;font-size:12px}
+
 /* Sidebar - Thiết kế tông màu xanh hoàng gia (Royal Blue #002B7F) sang trọng đồng bộ với nhận diện thương hiệu BẢN SẮC */
 .admin-sidebar {
   width: 260px;

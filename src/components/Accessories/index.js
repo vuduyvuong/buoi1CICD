@@ -1,40 +1,4 @@
-//Dependencies
-import React, { Component } from 'react';
-import {Icon} from 'react-materialize';
-import { Link } from 'react-router-dom';
-//Internals
-import PRODUCTS from '../Data';
-import './styles.css';
-
-class Accessories extends Component {
-  render() {
-    return(
-      <div className="accessories">
-        <div className="accessories-title">
-          <h4>Accessories</h4>
-        </div>
-        <div className="items">
-          {PRODUCTS.filter((product) => product.category === "accessories").map((product) => (
-            <div key={product.id} className="item">
-              <Link to={`/products/${product.id}`}>
-                <div className="product-img">
-                  <img alt={product.name} src={product.img} />
-                </div>
-                <div className="product-details">
-                  <h1 id="product-name">{product.name}</h1>
-                  <h4 id="product-description">{product.description}</h4>
-                </div>
-              </Link>
-              <div className="price-add">
-                <h5 id="product-price">{typeof product.price === 'number' && product.price > 1000 ? `${product.price.toLocaleString('vi-VN')} ₫` : `$${product.price}`}</h5>
-                <Icon small id="add-icon">add_shopping_cart</Icon>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    );
-  }
-}
-
+import React from 'react';
+import ProductCatalog from '../ProductCatalog';
+const Accessories = () => <ProductCatalog eyebrow="Điểm nhấn hoàn thiện" title="Phụ kiện" description="Những chi tiết nhỏ được chế tác kỹ lưỡng để tạo nên dấu ấn cá nhân khác biệt và đầy tinh tế." filter={(product) => product.category === 'accessories'} />;
 export default Accessories;

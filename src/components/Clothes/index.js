@@ -1,20 +1,4 @@
-//Dependencies
-import React, { Component } from 'react';
-//Internals
-import './styles.css';
-import ClothesItems from './ClothesItems';
-
-class Clothes extends Component {
-  render() {
-    return(
-      <div className="clothes">
-        <div className="clothes-title">
-          <h4>Clothes</h4>
-        </div>
-        <ClothesItems />
-      </div>
-    );
-  }
-}
-
+import React from 'react';
+import ProductCatalog from '../ProductCatalog';
+const Clothes = () => <ProductCatalog eyebrow="Tuyển tập mùa mới" title="Trang phục" description="Khám phá những thiết kế chủ đạo của BẢN SẮC — được tạo nên để đồng hành lâu dài cùng nhịp sống hiện đại." filter={(product) => product.category === 'clothes'} />;
 export default Clothes;

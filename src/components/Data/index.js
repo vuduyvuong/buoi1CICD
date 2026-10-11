@@ -1,224 +1,38 @@
+import linenShirt from '../../img/Brown Linen Shirt-image-container.png';
+import woolShirt from '../../img/Warm Woolen Shirt Women-image-container.png';
+import goldWatch from '../../img/Women Watch Gold-image-container.png';
+import pearlNecklace from '../../img/Black Pearl Necklace-image-container.png';
+import editorialOne from '../../img/photo-1602810318383-e386cc2a3ccf.avif';
+import editorialTwo from '../../img/photo-1584917865442-de89df76afd3.avif';
+import editorialThree from '../../img/photo-1556905055-8f358a7a47b2.avif';
+import editorialFour from '../../img/photo-1544441893-675973e31985.avif';
+import editorialFive from '../../img/photo-1524805444758-089113d48a6d.avif';
+import editorialSix from '../../img/338493_637289e70f3a49bb9167ee5f129f13f8~mv2.avif';
+
 const products = [
-  {
-    id: 1,
-    name: "Brown Shirt",
-    description: "Brown T-Shirt for Women",
-    price: 16.99,
-    gender: "women",
-    type: "shirt",
-    img: "https://image.ibb.co/kOhL6k/img1.jpg",
-    inCart: false,
-    category: "clothes"
-  },
-  {
-    id: 2,
-    name: "Light Brown Shirt",
-    description: "Light Brown Shirt for Women",
-    price: 4.99,
-    gender: "women",
-    type: "shirt",
-    img: "https://image.ibb.co/nNmKz5/img2.jpg",
-    inCart: false,
-    category: "clothes"
-  },
-  {
-    id: 3,
-    name: "Women Grey Shirt",
-    description: "Grey Shirt for Women",
-    price: 14.99,
-    gender: "women",
-    type: "shirt",
-    img: "https://image.ibb.co/n6iMCQ/img3.jpg",
-    inCart: false,
-    category: "clothes"
-  },
-  {
-    id: 4,
-    name: "Warm Shirt Women",
-    description: "Woolen Hoodie Women",
-    price: 20.00,
-    gender: "women",
-    type: "shirt",
-    img: "https://image.ibb.co/dVfORk/img4.jpg",
-    inCart: false,
-    category: "clothes"
-  },
-  {
-    id: 5,
-    name: "Women Grey Shirt",
-    description: "Light Grey Shirt for Women",
-    price: 4.99,
-    gender: "women",
-    type: "shirt",
-    img: "https://image.ibb.co/jpMxmk/img5.jpg",
-    inCart: false,
-    category: "clothes"
-  },
-  {
-    id: 6,
-    name: "Women Red/Brown Shirt",
-    description: "Red/Brown Blouse for Women",
-    price: 19.99,
-    gender: "women",
-    type: "blouse",
-    img: "https://image.ibb.co/mJppz5/img6.jpg",
-    inCart: false,
-    category: "clothes"
-  },
-  {
-    id: 7,
-    name: "Dark Grey Shirt Women",
-    description: "Dark Grey Shirt for Women",
-    price: 6.00,
-    gender: "women",
-    type: "shirt",
-    img: "https://image.ibb.co/eZiSmk/img7.jpg",
-    inCart: false,
-    category: "clothes"
-  },
-  {
-    id: 8,
-    name: "White Shirt Women",
-    description: "White Shirt for Women",
-    price: 14.99,
-    gender: "women",
-    type: "shirt",
-    img: "https://image.ibb.co/dyCysQ/img8.jpg",
-    inCart: false,
-    category: "clothes"
-  },
-  {
-    id: 9,
-    name: "Black Shirt Women",
-    description: "Black Shirt for Women",
-    price: 20.99,
-    gender: "women",
-    type: "shirt",
-    img: "https://image.ibb.co/eOYre5/img10.jpg",
-    inCart: false,
-    category: "clothes"
-  },
-  {
-    id: 10,
-    name: "No Shoulder Hoodie",
-    description: "Hoodie for Women",
-    price: 4.99,
-    gender: "women",
-    type: "shirt",
-    img: "https://image.ibb.co/f6gcK5/img9.jpg",
-    inCart: false,
-    category: "clothes"
-  },
-  {
-    id: 11,
-    name: "Women Watch Gold",
-    description: "Golden Watch for Women",
-    price: 45.99,
-    gender: "women",
-    type: "watch",
-    img: "https://images.pexels.com/photos/69046/watch-wrist-watch-packshot-time-69046.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb",
-    inCart: false,
-    category: "accessories"
-  },
-  {
-    id: 12,
-    name: "Black Pearl Necklace",
-    description: "Black Pearl Necklace for Women",
-    price: 14.99,
-    gender: "women",
-    type: "necklace",
-    img: "https://images.pexels.com/photos/221550/pexels-photo-221550.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb",
-    inCart: false,
-    category: "accessories"
-  },
-  {
-    id: 13,
-    name: "Man Black Shirt",
-    description: "Black T-Shirt for Men",
-    price: 10.99,
-    gender: "men",
-    type: "shirt",
-    img: "http://media.istockphoto.com/photos/smiling-young-man-in-blank-black-tshirt-picture-id464946525?k=6&m=464946525&s=612x612&w=0&h=KAjCFoJGDcFcx8R33Tq1vzqbfixh1XwGpFeiRNoTkRQ=",
-    inCart: false,
-    category: "clothes"
-  },
-  {
-    id: 14,
-    name: "Man Grey Tanktop",
-    description: "Grey Tanktop for Men",
-    price: 14.99,
-    gender: "men",
-    type: "shirt",
-    img: "http://media.istockphoto.com/photos/portrait-of-young-man-wearing-tshirt-picture-id465207699?k=6&m=465207699&s=612x612&w=0&h=wSacC0bmcrekig1DW8lOwH7y3X0e4R9266-TuivVQJA=",
-    inCart: false,
-    category: "clothes"
-  },
-  {
-    id: 15,
-    name: "Man White Shirt",
-    description: "White Shirt for Men",
-    price: 20.99,
-    gender: "men",
-    type: "shirt",
-    img: "http://media.istockphoto.com/photos/young-man-wearing-a-white-shirt-picture-id465331977?k=6&m=465331977&s=612x612&w=0&h=-K3c5eE2dZGmg6d5BrBfxOvcHRP7PwHrylyjuEVjbZo=",
-    inCart: false,
-    category: "clothes"
-  },
-  {
-    id: 16,
-    name: "Man Brown Shirt",
-    description: "Brown Shirt for Men",
-    price: 13.99,
-    gender: "men",
-    type: "shirt",
-    img: "http://media.istockphoto.com/photos/young-man-looks-to-the-side-picture-id184616842?k=6&m=184616842&s=612x612&w=0&h=SmtsffRByKDH4_HtzGY8bWvHgH8o_4epWVPogvfJXnk=",
-    inCart: false,
-    category: "clothes"
-  },
-  {
-    id: 17,
-    name: "Man Black Tie",
-    description: "Black Tie for Men",
-    price: 13.99,
-    gender: "men",
-    type: "tie",
-    img: "http://image.11st.my/g3/2/7/4/6/7/1/1274671_B_V5.jpg",
-    inCart: false,
-    category: "accessories"
-  },
-  {
-    id: 18,
-    name: "Black Shirt Men",
-    description: "Black Shirt for Men",
-    price: 9.99,
-    gender: "men",
-    type: "shirt",
-    img: "http://media.istockphoto.com/photos/smiling-man-in-a-black-t-shirt-picture-id520883622?k=6&m=520883622&s=612x612&w=0&h=XuxfQE0EOo_uWqA8SzNJvZ9Vn-sKR_cT4J9GRIudE4U=",
-    inCart: false,
-    category: "clothes"
-  },
-  {
-    id: 19,
-    name: "4-Pack Man Ties",
-    description: "Ties for Men",
-    price: 35.99,
-    gender: "men",
-    type: "tie",
-    img: "http://www.theethicalman.com/uploads/4/8/0/0/4800645/3035404_orig.png",
-    inCart: false,
-    category: "accessories"
-  },
-  {
-    id: 20,
-    name: "Man Black Tie",
-    description: "Black Tie for Men",
-    price: 15.99,
-    gender: "men",
-    type: "tie",
-    img: "http://static.becomegorgeous.com/img/articles/what_does_your_mans_tie_tell_about_his_personality_.jpg",
-    inCart: false,
-    category: "accessories"
-  },
+  { id: 1, name: 'Áo Sơ Mi Linen Nâu', description: 'Linen tự nhiên, phom suông thanh lịch', price: 1450000, gender: 'women', type: 'shirt', img: linenShirt, category: 'clothes', badge: 'Mới', colors: ['#8c6648', '#e7dfd2'], sizes: ['S', 'M', 'L'] },
+  { id: 2, name: 'Sơ Mi Lụa Cát', description: 'Bề mặt mềm nhẹ, đường may tối giản', price: 1690000, gender: 'women', type: 'shirt', img: editorialTwo, category: 'clothes', badge: 'Độc quyền', colors: ['#d8c5ad', '#1d2430'], sizes: ['S', 'M', 'L'] },
+  { id: 3, name: 'Blazer Cấu Trúc', description: 'Cầu vai sắc nét, tinh thần đương đại', price: 3290000, gender: 'women', type: 'blazer', img: editorialFour, category: 'clothes', badge: 'Limited', colors: ['#222222', '#b6aa9a'], sizes: ['S', 'M', 'L'] },
+  { id: 4, name: 'Áo Len Dệt Ấm', description: 'Sợi len cao cấp cho những ngày se lạnh', price: 3850000, gender: 'women', type: 'knitwear', img: woolShirt, category: 'clothes', badge: 'Bán chạy', colors: ['#ded7ca', '#4d443d'], sizes: ['S', 'M', 'L'] },
+  { id: 5, name: 'Đầm Midi Tĩnh Lặng', description: 'Dáng rủ nữ tính cùng bảng màu trung tính', price: 2890000, gender: 'women', type: 'dress', img: editorialOne, category: 'clothes', colors: ['#ebe5dc', '#243047'], sizes: ['XS', 'S', 'M', 'L'] },
+  { id: 6, name: 'Áo Khoác Dạ Giao Mùa', description: 'Kết cấu nhẹ, hoàn thiện thủ công', price: 4590000, gender: 'women', type: 'coat', img: editorialThree, category: 'clothes', colors: ['#88786b', '#161616'], sizes: ['S', 'M', 'L'] },
+  { id: 7, name: 'Sơ Mi Nam Essential', description: 'Cotton thoáng mát, phom regular fit', price: 1590000, gender: 'men', type: 'shirt', img: editorialFive, category: 'clothes', badge: 'Mới', colors: ['#f0ede7', '#2c3643'], sizes: ['M', 'L', 'XL'] },
+  { id: 8, name: 'Áo Khoác Nam Studio', description: 'Thiết kế đa lớp với chi tiết tinh giản', price: 3950000, gender: 'men', type: 'jacket', img: editorialSix, category: 'clothes', colors: ['#232323', '#8b8175'], sizes: ['M', 'L', 'XL'] },
+  { id: 9, name: 'Quần Âu Relaxed', description: 'Ly đứng mềm, chuyển động thoải mái', price: 1890000, gender: 'men', type: 'trousers', img: editorialFour, category: 'clothes', colors: ['#202020', '#c1b8aa'], sizes: ['M', 'L', 'XL'] },
+  { id: 10, name: 'Áo Polo Dệt Kim', description: 'Chất dệt mịn, cổ áo hiện đại', price: 1750000, gender: 'men', type: 'shirt', img: editorialFive, category: 'clothes', colors: ['#ede8dd', '#303b49'], sizes: ['M', 'L', 'XL'] },
+  { id: 11, name: 'Đồng Hồ Nữ Ánh Kim', description: 'Mặt số thanh mảnh, dây thép mạ vàng', price: 4200000, gender: 'women', type: 'watch', img: goldWatch, category: 'accessories', badge: 'Phụ kiện', colors: ['#c5a467'], sizes: ['Một cỡ'] },
+  { id: 12, name: 'Vòng Cổ Ngọc Trai Đen', description: 'Ngọc trai tuyển chọn, hoàn thiện thủ công', price: 890000, gender: 'women', type: 'necklace', img: pearlNecklace, category: 'accessories', badge: 'Thủ công', colors: ['#202020'], sizes: ['Một cỡ'] }
 ];
+
+export function getProducts() {
+  try {
+    const remote = JSON.parse(localStorage.getItem('BANSAC_CATALOG_CACHE')) || [];
+    if (!remote.length) return products;
+    return remote.map((item) => {
+      const local = products.find((product) => String(product.id) === String(item.id));
+      return Object.assign({}, local || {}, item, { img: item.img || (local && local.img) || '' });
+    });
+  } catch (error) { return products; }
+}
 
 export default products;

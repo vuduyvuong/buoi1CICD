@@ -17,6 +17,9 @@ import prodCoat from '../../img/Warm Woolen Shirt Women-image-container.png';
 import prodWatch from '../../img/Women Watch Gold-image-container.png';
 import prodNecklace from '../../img/Black Pearl Necklace-image-container.png';
 import philosophyTexture from '../../img/(Triết lý Thiết Kế)texture-image.png';
+import artisanImage from '../../img/photo-1556905055-8f358a7a47b2.avif';
+import { addToCart } from '../Cart/store';
+import PRODUCTS from '../Data';
 
 export const HOME_IMAGES = {
   // 1. Hero Banner
@@ -38,7 +41,7 @@ export const HOME_IMAGES = {
   philosophy: philosophyTexture,
 
   // 5. Nghệ thuật khâu tay đương đại (Artisan)
-  artisan: "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?auto=format&fit=crop&w=1000&q=80",
+  artisan: artisanImage,
 };
 
 class App extends Component {
@@ -51,7 +54,9 @@ class App extends Component {
     };
   }
 
-  handleAddToCart = (productName) => {
+  handleAddToCart = (productId, productName) => {
+    const product = PRODUCTS.find((item) => item.id === productId);
+    addToCart(productId, 1, product ? { size: product.sizes[0], color: product.colors[0] } : {});
     this.setState({ cartNotification: `Đã thêm "${productName}" vào giỏ hàng!` });
     setTimeout(() => {
       this.setState({ cartNotification: null });
@@ -217,14 +222,14 @@ class App extends Component {
                 <div className="product-meta">
                   <div className="product-info-row">
                     <h3 className="product-name">
-                      <Link to="/products/1">Brown Linen Shirt</Link>
+                      <Link to="/products/1">Áo Sơ Mi Linen Nâu</Link>
                     </h3>
                     <span className="product-price">1.450.000 ₫</span>
                   </div>
                   <button
                     type="button"
                     className="add-to-cart-btn"
-                    onClick={() => this.handleAddToCart('Brown Linen Shirt')}
+                    onClick={() => this.handleAddToCart(1, 'Áo Sơ Mi Linen Nâu')}
                   >
                     Thêm vào giỏ hàng +
                   </button>
@@ -245,14 +250,14 @@ class App extends Component {
                 <div className="product-meta">
                   <div className="product-info-row">
                     <h3 className="product-name">
-                      <Link to="/products/4">Warm Woolen Shirt Women</Link>
+                      <Link to="/products/4">Áo Len Dệt Ấm</Link>
                     </h3>
                     <span className="product-price">3.850.000 ₫</span>
                   </div>
                   <button
                     type="button"
                     className="add-to-cart-btn"
-                    onClick={() => this.handleAddToCart('Warm Woolen Shirt Women')}
+                    onClick={() => this.handleAddToCart(4, 'Áo Len Dệt Ấm')}
                   >
                     Thêm vào giỏ hàng +
                   </button>
@@ -273,14 +278,14 @@ class App extends Component {
                 <div className="product-meta">
                   <div className="product-info-row">
                     <h3 className="product-name">
-                      <Link to="/products/11">Women Watch Gold</Link>
+                      <Link to="/products/11">Đồng Hồ Nữ Ánh Kim</Link>
                     </h3>
                     <span className="product-price">4.200.000 ₫</span>
                   </div>
                   <button
                     type="button"
                     className="add-to-cart-btn"
-                    onClick={() => this.handleAddToCart('Women Watch Gold')}
+                    onClick={() => this.handleAddToCart(11, 'Đồng Hồ Nữ Ánh Kim')}
                   >
                     Thêm vào giỏ hàng +
                   </button>
@@ -301,14 +306,14 @@ class App extends Component {
                 <div className="product-meta">
                   <div className="product-info-row">
                     <h3 className="product-name">
-                      <Link to="/products/12">Black Pearl Necklace</Link>
+                      <Link to="/products/12">Vòng Cổ Ngọc Trai Đen</Link>
                     </h3>
                     <span className="product-price">890.000 ₫</span>
                   </div>
                   <button
                     type="button"
                     className="add-to-cart-btn"
-                    onClick={() => this.handleAddToCart('Black Pearl Necklace')}
+                    onClick={() => this.handleAddToCart(12, 'Vòng Cổ Ngọc Trai Đen')}
                   >
                     Thêm vào giỏ hàng +
                   </button>

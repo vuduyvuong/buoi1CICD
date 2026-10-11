@@ -19,19 +19,19 @@ const Footer = () => (
             Thương hiệu thời trang thiết kế cao cấp mang đậm dấu ấn bản sắc đương đại và tôn vinh phong cách sống tinh tế.
           </p>
           <div className="social-links">
-            <a href="#instagram" className="social-icon" aria-label="Instagram">
+            <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" className="social-icon" aria-label="Instagram">
               <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" strokeWidth="1.8" fill="none">
                 <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
                 <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
                 <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
               </svg>
             </a>
-            <a href="#facebook" className="social-icon" aria-label="Facebook">
+            <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" className="social-icon" aria-label="Facebook">
               <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" strokeWidth="1.8" fill="none">
                 <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
               </svg>
             </a>
-            <a href="#pinterest" className="social-icon" aria-label="Pinterest">
+            <a href="https://www.pinterest.com" target="_blank" rel="noopener noreferrer" className="social-icon" aria-label="Pinterest">
               <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" strokeWidth="1.8" fill="none">
                 <circle cx="12" cy="12" r="10"></circle>
                 <path d="M8 12c0-2.5 2-4 4-4s4 1.5 4 4c0 2-1 3.5-2.5 3.5-.8 0-1.5-.5-1.5-1.5 0-.5.2-1.5.2-2 0-1-.5-1.5-1.2-1.5-.8 0-1.5.8-1.5 1.8 0 .8.3 1.2.3 1.2s-1 4.5-1.2 5.5"></path>
@@ -44,7 +44,7 @@ const Footer = () => (
         <div className="footer-col">
           <h4 className="footer-heading">BỘ SƯU TẬP</h4>
           <ul className="footer-list">
-            <li><Link to="/clothes">Mùa Thu Đông 2024</Link></li>
+            <li><Link to="/clothes">Mùa Thu Đông 2026</Link></li>
             <li><Link to="/women">Trang Phục May Đo</Link></li>
             <li><Link to="/men">Áo Khoác & Blazer</Link></li>
             <li><Link to="/accessories">Phụ Kiện Cao Cấp</Link></li>
@@ -56,11 +56,11 @@ const Footer = () => (
         <div className="footer-col">
           <h4 className="footer-heading">CHĂM SÓC KHÁCH HÀNG</h4>
           <ul className="footer-list">
-            <li><a href="#size-guide">Hướng dẫn chọn kích cỡ</a></li>
-            <li><a href="#shipping">Chính sách vận chuyển</a></li>
-            <li><a href="#return">Đổi trả & Bảo hành</a></li>
-            <li><a href="#faq">Câu hỏi thường gặp (FAQ)</a></li>
-            <li><a href="#support">Liên hệ hỗ trợ</a></li>
+            <li><Link to="/size-guide">Hướng dẫn chọn kích cỡ</Link></li>
+            <li><Link to="/shipping">Chính sách vận chuyển</Link></li>
+            <li><Link to="/returns">Đổi trả & Bảo hành</Link></li>
+            <li><Link to="/faq">Câu hỏi thường gặp (FAQ)</Link></li>
+            <li><Link to="/support">Liên hệ hỗ trợ</Link></li>
           </ul>
         </div>
 
@@ -84,12 +84,12 @@ const Footer = () => (
       {/* Bottom Bar */}
       <div className="footer-bottom">
         <p className="copyright-text">
-          &copy; 2024 BẢN SẮC. Tất cả quyền được bảo lưu.
+          &copy; 2026 BẢN SẮC. Tất cả quyền được bảo lưu.
         </p>
         <div className="footer-policy-links">
-          <a href="#privacy">Chính sách bảo mật</a>
+          <Link to="/privacy">Chính sách bảo mật</Link>
           <span className="divider">•</span>
-          <a href="#terms">Điều khoản dịch vụ</a>
+          <Link to="/terms">Điều khoản dịch vụ</Link>
         </div>
       </div>
     </div>

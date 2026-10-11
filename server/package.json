@@ -1,0 +1,8 @@
+{
+  "name": "bansac-api",
+  "version": "1.0.0",
+  "private": true,
+  "main": "start.js",
+  "scripts": { "start": "node start.js", "test:db": "node test-db-connection.js", "seed:admin": "node seed-admin.js" },
+  "dependencies": { "dotenv": "^18.0.5", "express": "4.21.2", "mssql": "^12.7.4" }
+}

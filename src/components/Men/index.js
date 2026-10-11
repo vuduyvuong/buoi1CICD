@@ -1,17 +1,4 @@
-//Dependencies
 import React from 'react';
-//Internals
-import MenItems from './MenItems';
-import './index.css';
-
-const MensProducts = () => (
-  <div className="mens-products">
-    <div className="mens-title">
-      <h4>Men's Items</h4>
-    </div>
-    <MenItems />
-  </div>
-);
-
-
-export default MensProducts;
+import ProductCatalog from '../ProductCatalog';
+const Men = () => <ProductCatalog eyebrow="Bộ sưu tập dành cho nam" title="Nam" description="Tủ đồ nam đương đại cân bằng giữa cấu trúc, sự thoải mái và tinh thần tối giản vượt thời gian." filter={(product) => product.gender === 'men'} />;
+export default Men;

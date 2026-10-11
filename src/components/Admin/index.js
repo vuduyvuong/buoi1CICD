@@ -7,6 +7,8 @@ import Dashboard from './Dashboard';
 import ProductManager from './ProductManager';
 import PRODUCTS from '../Data';
 import logoFooter from '../../img/logo-footer.png';
+import { api } from '../../services/api';
+import { currentUser } from '../Auth/store';
 
 // Initial sample orders
 const INITIAL_ORDERS = [
@@ -97,8 +99,22 @@ class AdminPortal extends Component {
     this.state = {
       activeTab: 'dashboard', // 'dashboard' | 'products' | 'orders'
       products: savedProducts,
-      orders: INITIAL_ORDERS
+      orders: INITIAL_ORDERS,
+      loadingApi: true,
+      apiError: ''
     };
+  }
+
+  componentDidMount() {
+    if (!currentUser() || currentUser().role !== 'admin') { this.setState({ loadingApi: false }); return; }
+    Promise.all([api.get('/admin/products'), api.get('/orders')]).then(([productResult, orderResult]) => {
+      const products = productResult.products.map((product) => {
+        const local = PRODUCTS.find((item) => String(item.id) === String(product.id));
+        return Object.assign({}, local || {}, product, { img: product.img || (local && local.img) || '' });
+      });
+      const orders = orderResult.orders.map((order) => ({ id: order.id, code: order.id, customerName: order.customerName, customerPhone: order.customerPhone || (order.address && order.address.phone) || '', createdAt: new Date(order.createdAt).toLocaleString('vi-VN'), itemsSummary: order.items.map((item) => `${item.quantity}x ${item.name}`).join(', '), total: order.total, status: order.status === 'confirmed' ? 'pending' : order.status }));
+      this.setState({ products, orders, loadingApi: false, apiError: '' });
+    }).catch((error) => this.setState({ loadingApi: false, apiError: error.message }));
   }
 
   saveProductsToStorage = (products) => {
@@ -123,12 +139,18 @@ class AdminPortal extends Component {
     }
 
     this.saveProductsToStorage(updatedProducts);
+    const request = exists ? api.put(`/products/${productData.id}`, productData) : api.post('/products', productData);
+    request.then(({ product }) => {
+      const synced = exists ? this.state.products.map((item) => item.id === productData.id ? Object.assign({}, productData, product) : item) : [Object.assign({}, productData, product)].concat(this.state.products.filter((item) => item.id !== productData.id));
+      this.saveProductsToStorage(synced);
+    }).catch((error) => this.setState({ apiError: error.message }));
   };
 
   // Xóa sản phẩm
   handleDeleteProduct = (productId) => {
     const updated = this.state.products.filter(p => p.id !== productId);
     this.saveProductsToStorage(updated);
+    api.delete(`/products/${productId}`).catch((error) => this.setState({ apiError: error.message }));
   };
 
   // Chuyển đổi trạng thái nhanh (Đang bán <-> Tạm ẩn)
@@ -141,10 +163,14 @@ class AdminPortal extends Component {
       return p;
     });
     this.saveProductsToStorage(updated);
+    const changed = updated.find((item) => item.id === productId);
+    api.put(`/products/${productId}`, changed).catch((error) => this.setState({ apiError: error.message }));
   };
 
   render() {
     const { activeTab, products, orders } = this.state;
+
+    if (!currentUser() || currentUser().role !== 'admin') return <div className="admin-access-denied"><h1>Yêu cầu quyền quản trị</h1><p>Đăng nhập bằng tài khoản quản trị để truy cập khu vực này.</p><Link to="/login">Đăng nhập quản trị</Link></div>;
 
     return (
       <div className="admin-portal-wrapper">
@@ -212,6 +238,7 @@ class AdminPortal extends Component {
 
         {/* PHẦN CHÍNH */}
         <div className="admin-main">
+          {this.state.apiError && <div className="admin-api-error">{this.state.apiError}</div>}
           {/* Topbar */}
           <header className="admin-topbar">
             <div className="admin-breadcrumbs">
