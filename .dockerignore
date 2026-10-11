@@ -4,6 +4,10 @@ node_modules
 build
 npm-debug.log
 yarn-error.log
+server/data/db.json
+server/data/*.tmp
+.env
+.env.*
 *.mov
 *.gif
 Dockerfile
